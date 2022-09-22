@@ -1,0 +1,31 @@
+name: Upgrade Software Umami
+
+on:
+  workflow_call:
+    secrets:
+      VERCEL_TOKEN: 
+        required: false
+      ORG_ID: 
+        required: false
+      PROJECT_ID: 
+        required: false                     
+
+env:
+  REPOSITORY: umami-software/umami
+
+jobs:
+  umami:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ☁️ checkout repository
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ env.REPOSITORY }}
+
+      - name: Deploy Software Umami
+        uses: amondnet/vercel-action@v19
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+          vercel-args: '--prod' #Optional
+          vercel-org-id: ${{ secrets.ORG_ID}}  #Required
+          vercel-project-id: ${{ secrets.PROJECT_ID}} #Required 

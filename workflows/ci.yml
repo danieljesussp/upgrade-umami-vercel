@@ -1,0 +1,15 @@
+name: CI + CD
+
+on:
+  schedule:
+    - cron: 0 12 * * 6
+  workflow_dispatch:   
+
+jobs:
+  deploy:
+    name: Deploy
+    uses: ./.github/workflows/deploy.yml
+    secrets:
+      vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+      vercel-org-id: ${{ secrets.ORG_ID}}  #Required
+      vercel-project-id: ${{ secrets.PROJECT_ID}} #Required 
