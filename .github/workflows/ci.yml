@@ -1,8 +1,8 @@
 name: CI + CD
 
 on:
-  schedule:
-    - cron: 0 12 * * 6
+#  schedule:
+#    - cron: 0 12 * * 6
   workflow_dispatch:   
 
 jobs:
